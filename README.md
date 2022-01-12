@@ -32,4 +32,6 @@ npm run start:dev
 
 -----------------------------
 MYSQL Database by docker composer
+```
 docker-compose up -d
+```
