@@ -11,5 +11,5 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: nestday7
+      MYSQL_DATABASE: rontest
       MYSQL_ROOT_PASSWORD: password

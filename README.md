@@ -16,7 +16,7 @@ In order to start this sample, please make sure that you specify the right data 
     "port": 3306,
     "username": "root",
     "password": "root",
-    "database": "test",
+    "database": "rontest",
     "entities": ["dist/**/*.entity{.ts,.js}"],
     "synchronize": true
 }

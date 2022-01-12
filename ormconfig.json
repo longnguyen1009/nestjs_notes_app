@@ -4,7 +4,7 @@
     "port": 3306,
     "username": "root",
     "password": "password",
-    "database": "nestday7",
+    "database": "rontest",
     "entities": ["dist/**/*.entity{.ts,.js}"],
     "synchronize": true
 }
