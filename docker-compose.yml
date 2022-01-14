@@ -1,15 +1,48 @@
-version: '2'
+# version: '2'
+# services:
+#   db_data:
+#     image: busybox
+#     volumes:
+#       - /var/lib/mysql
+#   db:
+#     image: mysql:5.7
+#     volumes_from:
+#       - db_data
+#     ports:
+#       - "3306:3306"
+#     environment:
+#       MYSQL_DATABASE: rontest
+#       MYSQL_ROOT_PASSWORD: password
+
+
+version: "3"
 services:
-  db_data:
-    image: busybox
-    volumes:
-      - /var/lib/mysql
-  db:
-    image: mysql:5.7
-    volumes_from:
-      - db_data
+  postgres:
+    container_name: postgres
+    image: postgres:latest
     ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: rontest
-      MYSQL_ROOT_PASSWORD: password
+    - "5432:5432"
+    volumes:
+    - /data/postgres:/data/postgres
+    env_file:
+    - docker.env
+    networks:
+    - postgres
+ 
+  pgadmin:
+    links:
+    - postgres:postgres
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+    - "8080:80"
+    volumes:
+    - /data/pgadmin:/root/.pgadmin
+    env_file:
+    - docker.env
+    networks:
+    - postgres
+ 
+networks:
+  postgres:
+    driver: bridge

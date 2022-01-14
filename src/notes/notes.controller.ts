@@ -17,7 +17,8 @@ export class NotesController {
     return this.notesService.findOne(id);
   }
 
-  @Post()create(@Body()note : Note) {
+  @Post()
+  create(@Body()note : Note) {
     return this.notesService.createNote(note);
   }
 

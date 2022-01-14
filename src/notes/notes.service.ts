@@ -5,19 +5,21 @@ import { Note } from './note.entity';
 
 @Injectable()
 export class NotesService {
+  
   constructor(
     @InjectRepository(Note) private notesRepository: Repository<Note>,
   ) {}
+
   async getNotes(): Promise<Note[]> {
     return await this.notesRepository.find();
   }
 
-  findOne(id: string): Promise<Note> {
-    return this.notesRepository.findOne(id);
+  async findOne(id: string): Promise<Note> {
+    return await this.notesRepository.findOne(id);
   }
 
-  async createNote(note: Note) {
-    this.notesRepository.save(note);
+  async createNote(note: Note){
+    return await this.notesRepository.save(note);
   }
 
   async remove(id: string): Promise<void> {
